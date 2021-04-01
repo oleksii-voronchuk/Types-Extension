@@ -34,5 +34,22 @@ namespace Assets.Tools.OLVOR.Scripts.Extensions
             list.Clear();
             list.AddRange(sorted);
         }
+
+        /// <summary>
+        /// Removes last elements of the list
+        /// </summary>
+        public static void RemoveLast<T>(this List<T> list, int count)
+        {
+            if (count > list.Count) throw new ArgumentOutOfRangeException(nameof(count));
+            list.RemoveRange(list.Count - count, count);
+        }
+
+        /// <summary>
+        /// Removes last element in the list
+        /// </summary>
+        public static void RemoveLast<T>(this List<T> list)
+        {
+            RemoveLast(list, 1);
+        }
     }
 }
